@@ -10,7 +10,6 @@ public class Message
     public string? Id { get; set; }
 
     public string MessageText { get; set; } = null!;
-
     public string Username { get; set; } = null!;
 
     public DateTime DateTime { get; set; }

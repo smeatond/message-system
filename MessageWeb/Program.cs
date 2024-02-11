@@ -1,13 +1,16 @@
 using MessageWeb.Hubs;
 using MessageWeb.Models;
+using MessageWeb.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddControllers();
 builder.Services.AddSignalR();
 builder.Services.Configure<MessageDatabaseSettings>(
     builder.Configuration.GetSection("MessageDatabase"));
+builder.Services.AddSingleton<MessageService>();
 var app = builder.Build();
 
 
@@ -28,5 +31,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
 app.MapHub<MessageHub>("/message");
 app.Run();

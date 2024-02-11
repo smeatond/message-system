@@ -18,7 +18,7 @@ public class MessageService
             messageDatabaseSettings.Value.DatabaseName);
 
         _messagesCollection = mongoDatabase.GetCollection<Message>(
-            messageDatabaseSettings.Value.MessagesCollectionName);
+            messageDatabaseSettings.Value.MessageCollectionName);
     }
 
     public async Task<List<Message>> GetAsync() =>
