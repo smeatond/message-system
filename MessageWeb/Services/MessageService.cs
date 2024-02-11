@@ -7,6 +7,7 @@ namespace MessageWeb.Services;
 public class MessageService
 {
     private readonly IMongoCollection<Message> _messagesCollection;
+    
 
     public MessageService(
         IOptions<MessageDatabaseSettings> messageDatabaseSettings)

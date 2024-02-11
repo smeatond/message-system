@@ -12,9 +12,10 @@ namespace MessageWeb.Hubs
         _messageService = messageService;
         public async Task SendMessage(string user, string message)
         {
-            var newMessage = new Message{MessageText = message, Username = user, DateTime = new DateTime()};
+            var datetime = new DateTime();
+            var newMessage = new Message{MessageText = message, Username = user, DateTime = datetime};
             await _messageService.CreateAsync(newMessage);
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            await Clients.All.SendAsync("ReceiveMessage", user, message, datetime);
         }
     }
 }
