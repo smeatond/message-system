@@ -1,12 +1,16 @@
 using MessageWeb.Hubs;
+using MessageWeb.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSignalR();
-
+builder.Services.Configure<MessageDatabaseSettings>(
+    builder.Configuration.GetSection("MessageDatabase"));
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
